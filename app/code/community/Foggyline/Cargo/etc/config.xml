@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Foggyline_Cargo>
+			<version>1.0.0.0</version>
+		</Foggyline_Cargo>
+	</modules>
+	<global>
+		<models>
+			<foggyline_cargo>
+				<class>Foggyline_Cargo_Model</class>
+			</foggyline_cargo>
+		</models>
+	</global>
+	<default>
+		<carriers>
+			<foggyline_cargo_fixy>
+				<active>1</active>
+				<model>foggyline_cargo/shipping_carrier_fixy</model>
+				<title>Foggyline Cargo</title>
+				<name>Fixy</name>
+			</foggyline_cargo_fixy>
+		</carriers>
+	</default>
+</config>
