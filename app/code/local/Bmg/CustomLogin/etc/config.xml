@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<config>
+	<modules>
+		<Bmg_CustomLogin>
+			<version>0.1.0</version>
+		</Bmg_CustomLogin>
+	</modules>
+	<global>
+		<models>
+			<bmg_customlogin>
+				<class>Bmg_CustomLogin_Model</class>
+				<resourceModel>bmg_customlogin_resource</resourceModel>
+			</bmg_customlogin>
+			<bmg_customlogin_resource>
+				<class>Bmg_CustomLogin_Model_Resource</class>
+				<entities>
+					<customlogin>
+						<table>bmg_customlogin_table</table>
+					</customlogin>
+				</entities>
+			</bmg_customlogin_resource>
+		</models>
+		<blocks>
+			<customlogin>
+				<class>Bmg_CustomLogin_Block</class>
+			</customlogin>
+		</blocks>
+		<helpers>
+			<customlogin>
+				<class>Bmg_CustomLogin_Helper</class>
+			</customlogin>
+		</helpers>
+		<resources>
+			<bmg_customlogin_setup>
+				<setup>
+					<module>Bmg_CustomLogin</module>
+				</setup>
+			</bmg_customlogin_setup>
+		</resources>
+	</global>
+	
+	<frontend>
+		<routers>
+			<customlogin>
+				<use>standard</use>
+				<args>
+					<frontName>customlogin</frontName>
+					<module>Bmg_CustomLogin</module>
+				</args>
+			</customlogin>
+		</routers>
+		<layout>
+			<updates>
+				<customlogin>
+					<file>customlogin.xml</file>
+				</customlogin>
+			</updates>
+		</layout>
+	</frontend>
+</config>

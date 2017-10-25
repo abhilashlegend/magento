@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout version="0.1.0">
+	<test_index_index>
+		<reference name="content">
+			<block type="test/test" name="test" template="test/test.phtml" />
+		</reference>
+	</test_index_index>
+	<test_user_view_history>
+		<reference name="content">
+			<block type="test/history" name="user_history" template="user/history.phtml" />
+		</reference>
+	</test_user_view_history>
+</layout>

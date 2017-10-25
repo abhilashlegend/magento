@@ -1,0 +1,56 @@
+<config>
+	<modules>
+		<Abhi_Gallery>
+			<version>1.0.3</version>
+		</Abhi_Gallery>
+	</modules>
+	<global>
+		<models>
+			<gallery>
+				<class>Abhi_Gallery_Model</class>
+				<resourceModel>abhi_gallery_resource</resourceModel>
+			</gallery>
+			<abhi_gallery_resource>
+				<class>Abhi_Gallery_Model_Resource</class>
+				<entities>
+					<gallery>
+						<table>abhi_cms_gallery</table>
+					</gallery>
+				</entities>
+			</abhi_gallery_resource>	
+		</models>
+		<resources>
+			<abhi_gallery_setup>
+				<setup>
+					<module>Abhi_Gallery</module>
+				</setup>
+			</abhi_gallery_setup>
+		</resources>
+		<blocks>
+			<gallery>
+				<class>Abhi_Gallery_Block</class>
+			</gallery>
+		</blocks>
+	</global>
+	<adminhtml>
+        <layout>
+            <updates>
+                <gallery>
+                    <file>gallery.xml</file>
+                </gallery>
+            </updates>
+        </layout>
+    </adminhtml>
+	<admin>
+		<routers>
+			<adminhtml>
+				<args>
+					<modules>
+						<abhi_gallery before="Mage_Adminhtml">Abhi_Gallery_Adminhtml_Rewrite</abhi_gallery>
+					</modules>
+				</args>
+			</adminhtml>
+ 
+		</routers>
+	</admin>
+</config>

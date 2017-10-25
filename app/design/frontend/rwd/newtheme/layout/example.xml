@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout version="0.1.0">
+	<example_index_index>
+		<update handle="page_two_columns_right" />
+		<reference name="content">
+			<block type="example/welcome" template="example/welcome.phtml" />
+		</reference>
+	</example_index_index>
+</layout>

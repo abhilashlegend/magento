@@ -1,0 +1,72 @@
+<?xml version="1.0"?>
+<config>
+	<modules>
+		<Abhi_Test>
+			<version>3.0.0</version>
+		</Abhi_Test>
+	</modules>
+	<frontend>
+		<routers>
+			<test>
+				<use>standard</use>
+				<args>
+					<module>Abhi_Test</module>
+					<frontName>test</frontName>
+				</args>
+			</test>
+		</routers>
+		<layout>
+			<updates>
+				<test>
+					<file>test.xml</file>
+				</test>
+			</updates>
+		</layout>
+	</frontend>
+	<global>
+		<models>
+			<test>
+				<class>Abhi_Test_Model</class> <!-- Location of all model class files -->
+				<resourceModel>test_mysql4</resourceModel> <!-- Location of resource model -->
+			</test>
+			<test_mysql4>
+				<class>Abhi_Test_Model_Mysql4</class>
+				<entities>
+					<test>
+						<table>test_tablename</table> <!-- Actual table name in sql -->
+					</test>
+				</entities>
+			</test_mysql4>
+		</models>
+		<resources> <!-- These are resource setting giving access to module, read/write permission on database -->
+			<test_setup>
+				<setup>
+					<module>Abhi_Test</module>
+				</setup>
+				<connection>
+					<use>core_setup</use>
+				</connection>
+			</test_setup>
+			<test_write>
+				<connection>
+					<use>core_write</use>
+				</connection>
+			</test_write>
+			<test_read>
+				<connection>
+					<use>core_read</use>
+				</connection>
+			</test_read>
+		</resources>
+		<blocks>
+			 <test>
+				<class>Abhi_Test_Block</class>
+			</test>
+		</blocks>
+		<helpers>
+			<test>
+				<class>Abhi_Test_Helper</class>
+			</test>
+		</helpers>
+	</global>
+</config>

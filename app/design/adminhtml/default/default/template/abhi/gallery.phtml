@@ -1,0 +1,115 @@
+<div class="entry-edit-head">
+    <h4 class="icon-head head-edit-form fieldset-legend">Images</h4>
+    <div class="form-buttons"></div>
+</div>
+<div class="fieldset fieldset-wide" id="<?php echo $this->getHtmlId() ?>">
+    <div class="hor-scroll">
+        <table class="form-list" style="width: 100%;" cellspacing="0">
+            <tbody>
+            <tr>
+                <td class="value" colspan="3" style="width: 100%;">
+                    <div id="<?php echo $this->getHtmlId() ?>">
+                        <ul class="messages">
+                            <li class="notice-msg">
+                                <ul>
+                                    <li>
+										<?php echo Mage::helper( 'catalog' )->__( 'Image type and information need to be specified for each store view.' ); ?>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <div class="grid">
+                            <table cellspacing="0" class="data border" id="<?php echo $this->getHtmlId() ?>_grid"
+                                   width="100%">
+                                <col width="1"/>
+                                <col/>
+                                <col width="70"/>
+								<?php foreach ( $this->getImageTypes() as $typeId => $type ): ?>
+                                    <col/>
+								<?php endforeach; ?>
+                                <col width="70"/>
+                                <col width="70"/>
+                                <thead>
+                                <tr class="headings">
+                                    <th><?php echo Mage::helper( 'catalog' )->__( 'Image' ) ?></th>
+                                    <th><?php echo Mage::helper( 'catalog' )->__( 'Label' ) ?></th>
+                                    <th><?php echo Mage::helper( 'catalog' )->__( 'Sort Order' ) ?></th>
+									<?php foreach ( $this->getImageTypes() as $typeId => $type ): ?>
+                                        <th><?php echo $type['label'] ?></th>
+									<?php endforeach; ?>
+                                    <th><?php echo Mage::helper( 'catalog' )->__( 'Exclude' ) ?></th>
+                                    <th class="last"><?php echo Mage::helper( 'catalog' )->__( 'Remove' ) ?></th>
+                                </tr>
+                                </thead>
+                                <tbody id="<?php echo $this->getHtmlId() ?>_list">
+                                <tr id="<?php echo $this->getHtmlId() ?>_template" class="template no-display">
+                                    <td class="cell-image">
+                                        <div class="place-holder"
+                                             onmouseover="<?php echo $this->getJsObjectName(); ?>.loadImage('__file__')">
+                                            <span><?php echo Mage::helper( 'catalog' )->__( 'Roll Over for preview' ) ?></span>
+                                        </div>
+                                        <img src="<?php echo $this->getSkinUrl( 'images/spacer.gif' ) ?>" width="100"
+                                             style="display:none;" alt=""/></td>
+                                    <td class="cell-label"><input type="text" class="input-text"
+                                                                  onkeyup="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')"
+                                                                  onchange="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')"/>
+                                    </td>
+                                    <td class="cell-position"><input type="text" class="input-text validate-number"
+                                                                     onkeyup="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')"
+                                                                     onchange="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')"/>
+                                    </td>
+									<?php foreach ( $this->getImageTypes() as $typeId => $type ): ?>
+                                        <td class="cell-<?php echo $typeId ?> a-center"><input type="radio"
+                                                                                               name="<?php echo $type['field'] ?>"
+                                                                                               onclick="<?php echo $this->getJsObjectName(); ?>.setProductImages('__file__')"
+                                                                                               value="__file__"/></td>
+									<?php endforeach; ?>
+                                    <td class="cell-disable a-center"><input type="checkbox"
+                                                                             onclick="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')"/>
+                                    </td>
+                                    <td class="cell-remove a-center last"><input type="checkbox"
+                                                                                 onclick="<?php echo $this->getJsObjectName(); ?>.updateImage('__file__')"/>
+                                    </td>
+                                </tr>
+                                <tr id="<?php echo $this->getHtmlId() ?>-image-0">
+                                    <td class="cell-image"><?php echo Mage::helper( 'catalog' )->__( 'No image' ) ?></td>
+                                    <td class="cell-label"><input type="hidden"/>&nbsp;</td>
+                                    <td class="cell-position"><input type="hidden"/>&nbsp;</td>
+									<?php foreach ( $this->getImageTypes() as $typeId => $type ): ?>
+                                        <td class="cell-<?php echo $typeId ?> a-center"><input type="radio"
+                                                                                               name="<?php echo $type['field'] ?>"
+                                                                                               onclick="<?php echo $this->getJsObjectName(); ?>.setProductImages('no_selection')"
+                                                                                               value="no_selection"/>
+                                        </td>
+									<?php endforeach; ?>
+                                    <td class="cell-disable"><input type="hidden"/>&nbsp;</td>
+                                    <td class="cell-remove last"><input type="hidden"/>&nbsp;</td>
+                                </tr>
+                                </tbody>
+                                <tfoot>
+                                <tr>
+                                    <td colspan="100" class="last" style="padding:8px">
+										<?php echo Mage::helper( 'catalog' )->__( 'Maximum width and height dimension for upload image is %s.', Mage::getStoreConfig( Mage_Catalog_Helper_Image::XML_NODE_PRODUCT_MAX_DIMENSION ) ); ?>
+										<?php echo $this->getUploaderHtml() ?>
+                                    </td>
+                                </tr>
+                                </tfoot>
+                            </table>
+                        </div>
+                    </div>
+                    <input type="hidden" id="<?php echo $this->getHtmlId() ?>_save" name="post[media_gallery][images]"
+                           value="<?php echo $this->escapeHtml( $this->getImagesJson() ) ?>"/>
+                    <input type="hidden" id="<?php echo $this->getHtmlId() ?>_save_image"
+                           name="post[media_gallery][values]" value="{}"/>
+                    <script type="text/javascript">
+                        //<![CDATA[
+                        var <?php echo $this->getJsObjectName(); ?> =
+                        new Product.Gallery('<?php echo $this->getHtmlId() ?>', <?php echo $this->getImageTypesJson() ?>);
+                        //]]>
+                    </script>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

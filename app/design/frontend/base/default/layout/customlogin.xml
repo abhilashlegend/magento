@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout version="0.1.0">
+	<customlogin_index_index>
+		<update handle="page_two_columns_right" />
+		<reference name="content">
+<!--			<block type="core/template" template="customlogin/login.phtml" />-->
+				<block type="customlogin/login" />
+		</reference>
+	</customlogin_index_index>
+</layout>
